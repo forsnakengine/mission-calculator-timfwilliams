@@ -6,28 +6,43 @@
   <title>Calc-you-later SUCKER</title>
   <link rel="shortcut icon" href="./favicon.ico">
   <link rel="stylesheet" href="./index.css">
+  <script> 
+    var newNumber = 0;
+    var currentNumber = 0;
+
+    function clearNumber() {
+      console.log(currentNumber);
+      currentNumber = 0;
+      document.getElementById("output").innerHTML = currentNumber;
+    }
+
+    function numberButton(button) {
+      newNumber = (currentNumber * 10) + button;
+      document.getElementById("output").innerHTML = newNumber;
+      currentNumber = newNumber;  
+    }
+  </script>
 </head>
 <body>
-  <script type='module'>
-    import './index.mjs';
-  </script>
-  <input type="text" id="output" name="output" value="hello" readonly><br><br>
-  <button type="button">1</button>
-  <button type="button">2</button>
-  <button type="button">3</button>
-  <button type="button">4</button>
-  <button type="button">5</button><br>
-  <button type="button">6</button>
-  <button type="button">7</button>
-  <button type="button">8</button>
-  <button type="button">9</button>
-  <button type="button">0</button><br>
-  <button type="button">.</button>
+  <div>
+    <p id="output">0</p>
+  </div>
+  <button onclick="numberButton(1)" type="button">1</button>
+  <button onclick="numberButton(2)" type="button">2</button>
+  <button onclick="numberButton(3)" type="button">3</button>
+  <button onclick="numberButton(4)" type="button">4</button>
+  <button onclick="numberButton(5)" type="button">5</button><br>
+  <button onclick="numberButton(6)" type="button">6</button>
+  <button onclick="numberButton(7)" type="button">7</button>
+  <button onclick="numberButton(8)" type="button">8</button>
+  <button onclick="numberButton(9)" type="button">9</button>
+  <button onclick="numberButton(0)" type="button">0</button><br>
+  <button onclick="numberButton(.)" type="button">.</button>
   <button type="button">+</button>
   <button type="button">-</button>
   <button type="button">*</button>
   <button type="button">÷</button><br>
-  <button type="button">C</button>
+  <button onclick="clearNumber()" type="button">C</button>
   <button type="button">=</button>
 </body>
 </html>
