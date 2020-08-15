@@ -7,11 +7,17 @@
   <link rel="shortcut icon" href="./favicon.ico">
   <link rel="stylesheet" href="./index.css">
   <script> 
+    /*
+    Javascript doesn't operate on decimalized numbers with enough precision to even construct an initial number, 
+    so for accurate math we need to pass around nonDecimalized numbers and keep track of the decimalized value, 
+    this implementation may need refactoring once start implementing operators
+    */
     var nonDecimalizedNumber = 0;
     var decimalizedNumber = 0;
     var decimalPlace = 0;
     var displayDigitCount = 0;
     var decimalDisplayString;
+    var maxDisplayLength = 10; //arbitrarily chosen
 
     function clearButton() {
       nonDecimalizedNumber = 0;
@@ -22,7 +28,7 @@
     }
 
     function numberButton(button) {
-      if(displayDigitCount < 10){
+      if(displayDigitCount < maxDisplayLength){
         var newNumber = (nonDecimalizedNumber * 10) + button;
         nonDecimalizedNumber = newNumber; 
         displayDigitCount++;
