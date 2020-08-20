@@ -6,21 +6,12 @@
   <title>Calc-you-later SUCKER</title>
   <link rel="shortcut icon" href="./favicon.ico">
   <link rel="stylesheet" href="./index.css">
-  <script> 
-    var newNumber = 0;
-    var currentNumber = 0;
-
-    function clearNumber() {
-      console.log(currentNumber);
-      currentNumber = 0;
-      document.getElementById("output").innerHTML = currentNumber;
-    }
-
-    function numberButton(button) {
-      newNumber = (currentNumber * 10) + button;
-      document.getElementById("output").innerHTML = newNumber;
-      currentNumber = newNumber;  
-    }
+  <script type="module"> 
+    import {clearButton, numberButton, decimalButton} from "./index.mjs";
+    // globalThis is equivalent to window for this scope since the window is the top level object
+    globalThis.clearButton = clearButton;
+    globalThis.numberButton = numberButton;
+    globalThis.decimalButton = decimalButton;
   </script>
 </head>
 <body>
@@ -37,12 +28,12 @@
   <button onclick="numberButton(8)" type="button">8</button>
   <button onclick="numberButton(9)" type="button">9</button>
   <button onclick="numberButton(0)" type="button">0</button><br>
-  <button onclick="numberButton(.)" type="button">.</button>
+  <button onclick="decimalButton()" type="button">.</button>
   <button type="button">+</button>
   <button type="button">-</button>
   <button type="button">*</button>
   <button type="button">÷</button><br>
-  <button onclick="clearNumber()" type="button">C</button>
+  <button onclick="clearButton()" type="button">C</button>
   <button type="button">=</button>
 </body>
 </html>
