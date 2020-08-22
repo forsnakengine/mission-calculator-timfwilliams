@@ -1,44 +1,52 @@
+import Big from './big.mjs'; //external library to handle arbitrary numeric precision in JS
+
 /*
 Javascript doesn't operate on decimalized numbers with enough precision to even construct an initial number, 
 so for accurate math we need to pass around nonDecimalized numbers and keep track of the decimalized value, 
 this implementation may need refactoring once start implementing operators
 */
-var nonDecimalizedNumber = 0;
-var decimalizedNumber = 0;
+var numberConstructor = new Big(0);
 var decimalPlace = 0;
 var displayDigitCount = 0;
 var decimalDisplayString;
 var maxDisplayLength = 10; //arbitrarily chosen
 
 function clearButton() {
-    nonDecimalizedNumber = 0;
-    decimalizedNumber = 0;
+    numberConstructor = new Big(0);
     decimalPlace = 0;
     displayDigitCount = 0;
-    document.getElementById("output").innerHTML = nonDecimalizedNumber;
+    document.getElementById("output").innerHTML = numberConstructor;
 }
 
 function numberButton(button) {
-    if(displayDigitCount < maxDisplayLength){
-        var newNumber = (nonDecimalizedNumber * 10) + button;
-        nonDecimalizedNumber = newNumber; 
+    if((displayDigitCount === 0 && button === 0) || displayDigitCount === maxDisplayLength){
+        console.log(displayDigitCount);
+        return;
+    } else {
         displayDigitCount++;
-        if (decimalPlace > 0){
-            newNumber = newNumber/Math.pow(10, decimalPlace);
-            decimalizedNumber = newNumber;
-            decimalPlace++;
-            decimalDisplayString = decimalDisplayString.concat(button.toString());
-            document.getElementById("output").innerHTML = decimalDisplayString;
+        if (decimalPlace === 0){
+            numberConstructor = numberConstructor.times(10).plus(button);
+            decimalDisplayString = numberConstructor.toString();
+        } else if (button === 0){ // appropriately display trailing zeros
+            decimalDisplayString = decimalDisplayString.toString().concat("0");
+            decimalPlace++
         } else {
-            document.getElementById("output").innerHTML = newNumber;
-    }
+            numberConstructor = numberConstructor.plus(button/Math.pow(10, decimalPlace));
+            decimalDisplayString = numberConstructor.toString();
+            decimalPlace++
+        }
+        document.getElementById("output").innerHTML = decimalDisplayString;
     }
 }
 
 function decimalButton() {
-    if (decimalPlace < 1) {
+    if (decimalPlace === 0) {
+        if (displayDigitCount === 0){
+            displayDigitCount++;
+            console.log(displayDigitCount);
+        }
         decimalPlace = 1;
-        decimalDisplayString = nonDecimalizedNumber.toString().concat(".");
+        decimalDisplayString = numberConstructor.toString().concat("."); // appropriately display trailing decimal
         document.getElementById("output").innerHTML = decimalDisplayString;
     }
 }
