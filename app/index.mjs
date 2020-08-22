@@ -51,4 +51,8 @@ function decimalButton() {
     }
 }
 
-export {clearButton, numberButton, decimalButton};
+function operatorButton(){
+    return;
+}
+
+export {clearButton, numberButton, decimalButton, operatorButton};
