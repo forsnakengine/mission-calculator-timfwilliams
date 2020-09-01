@@ -7,11 +7,13 @@
   <link rel="shortcut icon" href="./favicon.ico">
   <link rel="stylesheet" href="./index.css">
   <script type="module"> 
-    import {clearButton, numberButton, decimalButton} from "./index.mjs";
+    import {clearButton, numberButton, decimalButton, operatorButton, equalButton} from "./index.mjs";
     // globalThis is equivalent to window for this scope since the window is the top level object
     globalThis.clearButton = clearButton;
     globalThis.numberButton = numberButton;
     globalThis.decimalButton = decimalButton;
+    globalThis.operatorButton = operatorButton;
+    globalThis.equalButton = equalButton;
   </script>
 </head>
 <body>
@@ -29,11 +31,11 @@
   <button onclick="numberButton(9)" type="button">9</button>
   <button onclick="numberButton(0)" type="button">0</button><br>
   <button onclick="decimalButton()" type="button">.</button>
-  <button type="button">+</button>
-  <button type="button">-</button>
-  <button type="button">*</button>
-  <button type="button">÷</button><br>
+  <button onclick="operatorButton('plus')" type="button">+</button>
+  <button onclick="operatorButton('minus')" type="button">-</button>
+  <button onclick="operatorButton('times')" type="button">*</button>
+  <button onclick="operatorButton('div')" type="button">÷</button><br>
   <button onclick="clearButton()" type="button">C</button>
-  <button type="button">=</button>
+  <button onclick="equalButton()" type="button">=</button>
 </body>
 </html>
