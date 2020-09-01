@@ -84,9 +84,9 @@ function calculate(){
     }
     decimalDisplayString = storedNumber.toString();
     updateDisplay();
+    numberConstructor = undefined;
     decimalPlace = 0;
     displayDigitCount = 0;
-    numberConstructor = undefined;
 }
 
 
@@ -96,6 +96,8 @@ function equalButton() {
     } else {
         calculate();
         previousOperation = undefined;
+        decimalPlace = 0;
+        displayDigitCount = 0;
     }
 }
 
@@ -105,6 +107,8 @@ function operatorButton(operation){
     } else if (numberConstructor && !storedNumber){
         storedNumber = numberConstructor;
         numberConstructor = undefined;
+        decimalPlace = 0;
+        displayDigitCount = 0;
     } else if (storedNumber && numberConstructor && previousOperation){ //previousOperation should always be true when the others two are
         calculate();
     }
