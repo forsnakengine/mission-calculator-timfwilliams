@@ -6,21 +6,30 @@
   <title>Calc-you-later SUCKER</title>
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
   <style>
+    button, p {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 36px;
+      line-height: 42px;
+    }
     button {
       color: #E7DD59;
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 36px;
-      line-height: 42px;
       border: 0;
+      transition: all 0.2s;
+    }
+    button:hover {
+      font-size: 44px;
+      opacity: 0.9;
+    }
+    button:focus {
+      outline: none;
+    }
+    button:active {
+      outline: none;
+      opacity: 0.8;
     }
     p {
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 36px;
-      line-height: 42px;
       float: right;
       margin-block-start: 16px;
     }
@@ -28,9 +37,12 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: 74px 100px 100px 100px 100px 100px;
-      column-gap: 27px;
-      row-gap: 31px;
+      column-gap: 28px;
+      row-gap: 32px;
       margin: auto;
+      max-width: 484px; 
+      align-self: center; 
+      padding-top: 16px
     }
     .wide {
       grid-column: span 2;
@@ -40,8 +52,8 @@
       background-color: white;
     }
     .container {
-      max-width: 513px;
-      min-height: 763px;
+      max-width: 516px;
+      min-height: 768px;
       margin: auto;
       background-color: #20132D;
     }
@@ -51,7 +63,7 @@
     .operator {
       background-color: #AD2A65;
     }
-    .cbutton {
+    .clear_button {
       background-color: #41354C;
     }
   </style>
@@ -69,7 +81,7 @@
 </head>
 <body>
   <div class="container">
-    <div class="grid" style="max-width: 481px; align-self: center; padding-top: 16px">
+    <div class="grid">
       <div class="outputbox"><p id="output" style="padding: 0px 42px 0px 42px">0</p></div>
       <button onclick="numberButton(7)" type="button" class="number">7</button>
       <button onclick="numberButton(8)" type="button" class="number">8</button>
@@ -86,7 +98,7 @@
       <button onclick="numberButton(0)" type="button" class="wide number">0</button>
       <button onclick="decimalButton()" type="button" class="number">.</button>
       <button onclick="operatorButton('div')" type="button" class="operator">÷</button>
-      <button onclick="clearButton()" type="button" class="wide cbutton">c</button>
+      <button onclick="clearButton()" type="button" class="wide clear_button">c</button>
       <button onclick="equalButton()" type="button" class="wide operator">=</button>
     </div>
   </div>
