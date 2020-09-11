@@ -4,10 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calc-you-later SUCKER</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
   <style>
+    button, p {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 36px;
+      line-height: 42px;
+    }
+    button {
+      color: #E7DD59;
+      border: 0;
+      transition: all 0.2s;
+    }
+    button:hover {
+      font-size: 44px;
+      opacity: 0.9;
+    }
+    button:focus {
+      outline: none;
+    }
+    button:active {
+      outline: none;
+      opacity: 0.8;
+    }
+    p {
+      float: right;
+      margin-block-start: 16px;
+    }
     .grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 74px 100px 100px 100px 100px 100px;
+      column-gap: 28px;
+      row-gap: 32px;
+      margin: auto;
+      max-width: 484px; 
+      align-self: center; 
+      padding-top: 16px
+    }
+    .wide {
+      grid-column: span 2;
+    }
+    .outputbox {
+      grid-column: 1 / 5;
+      background-color: white;
+    }
+    .container {
+      max-width: 516px;
+      min-height: 768px;
+      margin: auto;
+      background-color: #20132D;
+    }
+    .number {
+      background-color: #00BED0;
+    }
+    .operator {
+      background-color: #AD2A65;
+    }
+    .clear_button {
+      background-color: #41354C;
     }
   </style>
   <link rel="shortcut icon" href="./favicon.ico">
@@ -23,29 +80,27 @@
   </script>
 </head>
 <body>
-  <div max-width="80">
-    <div>
-      <p id="output">0</p>
+  <div class="container">
+    <div class="grid">
+      <div class="outputbox"><p id="output" style="padding: 0px 42px 0px 42px">0</p></div>
+      <button onclick="numberButton(7)" type="button" class="number">7</button>
+      <button onclick="numberButton(8)" type="button" class="number">8</button>
+      <button onclick="numberButton(9)" type="button" class="number">9</button>
+      <button onclick="operatorButton('plus')" type="button" class="operator">+</button>
+      <button onclick="numberButton(4)" type="button" class="number">4</button>
+      <button onclick="numberButton(5)" type="button" class="number">5</button>
+      <button onclick="numberButton(6)" type="button" class="number">6</button>
+      <button onclick="operatorButton('minus')" type="button" class="operator">-</button>
+      <button onclick="numberButton(1)" type="button" class="number">1</button>
+      <button onclick="numberButton(2)" type="button" class="number">2</button>
+      <button onclick="numberButton(3)" type="button" class="number">3</button>
+      <button onclick="operatorButton('times')" type="button" class="operator">*</button>
+      <button onclick="numberButton(0)" type="button" class="wide number">0</button>
+      <button onclick="decimalButton()" type="button" class="number">.</button>
+      <button onclick="operatorButton('div')" type="button" class="operator">÷</button>
+      <button onclick="clearButton()" type="button" class="wide clear_button">c</button>
+      <button onclick="equalButton()" type="button" class="wide operator">=</button>
     </div>
-    <div class="grid" style="max-width: 100px">
-      <button onclick="numberButton(1)" type="button">1</button>
-      <button onclick="numberButton(2)" type="button">2</button>
-      <button onclick="numberButton(3)" type="button">3</button>
-      <button onclick="numberButton(4)" type="button">4</button>
-      <button onclick="numberButton(5)" type="button">5</button>
-      <button onclick="numberButton(6)" type="button">6</button>
-      <button onclick="numberButton(7)" type="button">7</button>
-      <button onclick="numberButton(8)" type="button">8</button>
-      <button onclick="numberButton(9)" type="button">9</button>
-      <button onclick="numberButton(0)" type="button">0</button>
-      <button onclick="decimalButton()" type="button">.</button>
-      <button onclick="operatorButton('plus')" type="button">+</button>
-      <button onclick="operatorButton('minus')" type="button">-</button>
-      <button onclick="operatorButton('times')" type="button">*</button>
-      <button onclick="operatorButton('div')" type="button">÷</button><br>
-      <button onclick="clearButton()" type="button">C</button>
-      <button onclick="equalButton()" type="button">=</button>
-  </div>
   </div>
 </body>
 </html>
